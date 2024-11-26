@@ -1,0 +1,15 @@
+create database lungdisease;
+use lungdisease;
+
+create table register(username varchar(50) primary key,
+password varchar(50),
+contact_no varchar(20),
+email varchar(50), 
+address varchar(155),
+usertype varchar(30));
+
+create table patients(patient_name varchar(50),
+patient_data varchar(300),
+predicted_stage varchar(30),
+process_date varchar(40));
+

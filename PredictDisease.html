@@ -1,0 +1,333 @@
+{% load static %}
+<html>
+<head>
+<title>Lung Cancer Prediction</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+ <script LANGUAGE="Javascript" >
+function validate(){
+	var x=document.forms["f1"]["t1"].value;
+	
+	if(x == null || x==""){
+		window.alert("Age must be enter");
+		document.f1.t1.focus();
+		return false;
+	}
+	
+	return true;
+}
+		
+	
+	</script>
+ </head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow"><font size="4" color="black">Lung Cancer Prediction</font></center></font>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+		<li><a href="{% url 'TrainML' %}"><font size="3" color="black">Train ML Algorithm</font></a></font></li>
+	    <li><a href="{% url 'DatasetVisualize' %}"><font size="3" color="black">Lung Disease Visualization</font></a></font></li>
+	   <li><a href="{% url 'PredictDisease' %}"><font size="3" color="black">Predict Lung Disease</font></a></font></li>
+	    <li><a href="{% url 'index' %}"><font size="3" color="black">Logout</font></a></font></li>		
+		</center></ul>
+<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'PredictDiseaseAction' %} OnSubmit="return validate()">
+	{% csrf_token %}<br/>
+   <h3><b>Lung Cancer Prediction Screen</b></h3>
+   
+	<font size="" color="black"><center>{{ data }}</center></font>
+						
+						<table align="center" width="80" >
+			 <tr><td><font size="" color="black">Age&nbsp;&nbsp;</b></td><td><input type="text" name="t1" style="font-family: Comic Sans MS" size="15"/></td>
+         
+		  
+		<td><font size="" color="black">Gender&nbsp;&nbsp;</b></td><td><select name="t2">
+		<option value="1">Male</option>
+		<option value="2">Female</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Air&nbsp;Pollution&nbsp;</b></td><td><select name="t3">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Alcohol&nbsp;Use&nbsp;</b></td><td><select name="t4">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Dust&nbsp;Allergy&nbsp;</b></td><td><select name="t5">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">OccuPational&nbsp;Hazards&nbsp;</b></td><td><select name="t6">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Genetic&nbsp;Risk&nbsp;</b></td><td><select name="t7">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Chronic&nbsp;Lung&nbsp;Disease</b></td><td><select name="t8">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Balanced&nbsp;Diet&nbsp;</b></td><td><select name="t9">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Obesity&nbsp;&nbsp;</b></td><td><select name="t10">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Smoking&nbsp;&nbsp;</b></td><td><select name="t11">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Passive&nbsp;Smoker&nbsp;</b></td><td><select name="t12">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Chest&nbsp;Pain&nbsp;</b></td><td><select name="t13">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Coughing&nbsp;Of&nbsp;Blood</b></td><td><select name="t14">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Fatigue&nbsp;&nbsp;</b></td><td><select name="t15">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Weight&nbsp;Loss&nbsp;</b></td><td><select name="t16">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Shortness&nbsp;Of&nbsp;Breath</b></td><td><select name="t17">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Wheezing&nbsp;&nbsp;</b></td><td><select name="t18">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Swallowing&nbsp;Difficulty&nbsp;</b></td><td><select name="t19">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+         
+		  
+		<td><font size="" color="black">Clubbing&nbsp;Finger&nbsp;Nails</b></td><td><select name="t20">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Frequent&nbsp;Cold&nbsp;</b></td><td><select name="t21">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td>
+
+		<td><font size="" color="black">Dry&nbsp;Cough</b></td><td><select name="t22">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+
+		<tr><td><font size="" color="black">Snoring&nbsp;&nbsp;</b></td><td><select name="t23">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		</select>
+		</td></tr>
+		 
+			<tr><td></td><td><input type="submit" value="Submit">
+			</td>
+			</table>
+			<br/><br/><br/><br/>
+				</div>	
+					
+				</div>
+				
+	</body>
+</html>
